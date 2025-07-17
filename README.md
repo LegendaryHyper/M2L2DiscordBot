@@ -8,5 +8,5 @@ This Discord bot is intended to be a general all-in-one tool, still undergoing i
 !info - Returns the same output of the already created bot as the *!go* command.
 !feedPokemon - Feeds the user's pokemon, letting the pokemon gain EXP and HP.
 !attack @user - Attacks the @mentioned user
-~!totalPokemons - Returns total amount of pokemons created.~ This is not yet implemented.
+~~!totalPokemons - Returns total amount of pokemons created.~~ This is not yet implemented.
 ```
