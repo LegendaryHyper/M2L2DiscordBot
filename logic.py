@@ -50,6 +50,7 @@ class Pokemon:
                 output = output + f"LVL {self.level} - {self.exp}/{self.exp_max}\n\n+{increase} EXP\n" + lvl_up_string
             else:
                 output = output + f"LVL {self.level} - {self.exp}/{self.exp_max}\n\n+{increase} EXP\n"
+            self.last_feed_time = datetime.now()
             return output
         else:
             return f"Pokemonunuzu {feed_cooldown - round(current_time.timestamp() - self.last_feed_time.timestamp())} saniye içinde besleyebilirsiniz." # !
@@ -68,7 +69,8 @@ class Pokemon:
         # Pokémon hakkında bilgi döndüren bir metot
         if not self.name:
             self.name = await self.get_name()  # Henüz yüklenmemişse bir adın geri alınması
-        return f"Pokémonunuzun ismi: {self.name}\nPokemon'un Canı: {self.pokemon_health_cur}/{self.pokemon_health_max}\nPokemon'un Seviyesi: LVL {self.level} - {self.exp}/{self.exp_max}"  # Pokémon adını içeren dizeyi döndürür
+        output = f"Pokémonunuzun ismi: {self.name}\nPokemon'un Canı: {self.pokemon_health_cur}/{self.pokemon_health_max}\nPokemon'un Seviyesi: LVL {self.level} - {self.exp}/{self.exp_max}"
+        return output # Pokémon adını içeren dizeyi döndürür
     async def pokemon_str(self):
         if not self.pokemon_strength:
             self.name = await self.get_name()

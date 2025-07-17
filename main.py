@@ -32,6 +32,12 @@ async def go(ctx):
         elif chance == 3:
             pokemon = Fighter(author)  # Fighter türünde bir Pokémon oluştururuz
         await ctx.send(await pokemon.info())  # Pokémon hakkında bilgi göndeririz
+        if pokemon == Wizard(author):
+            await ctx.send(f"Pokemon özelliği: Büyücü")
+        elif pokemon == Fighter(author):
+            await ctx.send(f"Pokemon özelliği: Savaşçı")
+        else:
+            await ctx.send(f"Pokemon özelliği: Yok")
         image_url = await pokemon.show_img()  # Pokémon görüntüsünün URL'sini alırız
         if image_url:
             pokemon.image = image_url
@@ -52,11 +58,16 @@ async def feedPokemon(ctx):
         await ctx.send("Pokemonunuz bulunamadı!")
 @bot.command()
 async def info(ctx):
-    
     author = ctx.author.name
     if author in Pokemon.pokemons.keys():
         pokemon = Pokemon.pokemons[author]
         await ctx.send(await pokemon.info())
+        if pokemon == Wizard(author):
+            await ctx.send(f"Pokemon özelliği: Büyücü")
+        elif pokemon == Fighter(author):
+            await ctx.send(f"Pokemon özelliği: Savaşçı")
+        else:
+            await ctx.send(f"Pokemon özelliği: Yok")
         embed = discord.Embed()  # Gömülü bir mesaj (embed) oluştururuz
         embed.set_image(url=pokemon.image)  # Gömülü mesaja görüntüyü ekleriz
         await ctx.send(embed=embed)
